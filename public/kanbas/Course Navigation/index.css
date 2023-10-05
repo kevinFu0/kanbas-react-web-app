@@ -1,0 +1,38 @@
+
+/* styling the links*/
+.wd-course-navigation {
+  list-style: none;
+  padding: 0px;
+  width: 190px;
+  margin: 0px;
+  margin-left: 20px;
+  background-color: white;
+}
+
+
+.wd-course-navigation li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 0.9em;
+  text-align: center;
+  padding-left: 10px;
+  text-align: left;
+  width: 130px;
+}
+
+
+/* links are red */
+.wd-course-navigation a {
+  color: red;
+  text-decoration: none;
+}
+
+/* makes the link black if we are clicking on it  */
+.wd-course-navigation li.wd-active {
+  border-left: 2px solid black;
+}
+.wd-course-navigation li.wd-active a {
+  color: black;
+}
