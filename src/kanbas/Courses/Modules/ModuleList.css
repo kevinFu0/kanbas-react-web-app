@@ -23,6 +23,14 @@
   --bs-border-radius: 0px;
   height: 80px;
 }
+
+.list-group-item {
+  border-radius: 0px;
+  --bs-border-radius: 0px;
+  height: 140px;
+}
+
+
 .list-group {
   border-radius: 0px;
   --bs-border-radius: 0px;
