@@ -1,13 +1,16 @@
 import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
-import db from '../Database';
+
 import './index.css';
 
-function Dashboard( 
-
-  { courses, course, setCourse, addNewCourse,
-    deleteCourse, updateCourse } ) {
-  
+function Dashboard({
+  courses,
+  course,
+  setCourse,
+  addNewCourse,
+  deleteCourse,
+  updateCourse,
+}) {
   // const [courses, setCourses] = useState(db.courses);
   // const [course, setCourse] = useState({
   //   name: 'New Course',
@@ -80,30 +83,30 @@ function Dashboard(
                 to={`/Kanbas/Courses/${course._id}`}
                 className="list-group-item"
               >
-                <div class="card h-200">
+                <div class="card h-240">
                   <img src="dice.jpg" class="card-img-top" alt="..." />
                   <h5 class="card-title">{course.name}</h5>
                   <p class="card-text">{course.number}</p>
+
+                  {/* // puts course info into the course state variable */}
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setCourse(course);
+                    }}
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+                      deleteCourse(course._id);
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
-
-                {/* // puts course info into the course state variable */}
-                <button
-                  onClick={(event) => {
-                    event.preventDefault();
-                    setCourse(course);
-                  }}
-                >
-                  Edit
-                </button>
-
-                <button
-                  onClick={(event) => {
-                    event.preventDefault();
-                    deleteCourse(course._id);
-                  }}
-                >
-                  Delete
-                </button>
               </Link>
             </div>
           ))}

@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import db from '../../Database';
+
 
 // create reducer's initial state
 const initialState = {
-  modules: db.modules,
+  modules: [],
   module: { name: 'New Module 123', description: 'New Description' },
 };
 
@@ -18,11 +18,14 @@ const modulesSlice = createSlice({
 
   reducers: {
     addModule: (state, action) => {
-      state.modules = [
-        { ...action.payload, _id: new Date().getTime().toString() },
-        ...state.modules,
-      ];
+      state.modules = [action.payload, ...state.modules];
     },
+
+    setModules: (state, action) => {
+      state.modules = action.payload;
+    },
+
+   
     // module ID to delete is in action.payload
     // filter out module to delete
 
@@ -50,6 +53,6 @@ const modulesSlice = createSlice({
   },
 });
 
-export const { addModule, deleteModule, updateModule, setModule } =
+export const { addModule, deleteModule, updateModule, setModule, setModules } =
   modulesSlice.actions;
 export default modulesSlice.reducer;

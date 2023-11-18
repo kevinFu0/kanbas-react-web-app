@@ -6,11 +6,26 @@ import Courses from './Courses';
 import store from './store';
 import { Provider } from 'react-redux';
 
-import db from './Database';
-import { useState } from 'react';
+import { React, useEffect, useState } from 'react';
+
+import axios from "axios";
 
 function Kanbas() {
-  const [courses, setCourses] = useState(db.courses);
+  const [courses, setCourses] = useState([]);
+
+  const API_BASE = process.env.REACT_APP_API_BASE;
+  const URL = `${API_BASE}/courses`;
+  const findAllCourses = async () => {
+    const response = await axios.get(URL);
+    setCourses(response.data);
+  };
+  // use effect to fetch data from the server
+  // happens only once when the component is rendered
+  useEffect(() => {
+    findAllCourses();
+  }, []);
+
+
   const [course, setCourse] = useState({
     name: 'New Course',
     number: 'New Number',
@@ -18,29 +33,43 @@ function Kanbas() {
     endDate: '2023-12-15',
   });
 
-  const updateCourse = () => {
+  // puts the updated course to the server
+  // swaps the updated course with the old course in courses array
+  const updateCourse = async () => {
+    const response = await axios.put(
+      `${URL}/${course._id}`,
+      course
+    );
     setCourses(
       courses.map((c) => {
         if (c._id === course._id) {
-          return course;
-        } else {
-          return c;
+          return response.data;
         }
+        return c;
       })
     );
+    setCourse({name: "New Title", number: "New Number"} );
   };
 
-  // add course at the end of the array
-  // overriding _id to current time stamp
-  const addNewCourse = () => {
+  // calls post request to add new course to the server
+  const addNewCourse = async () => {
+    const response = await axios.post(URL, course);
     setCourses([
       ...courses,
-      { ...course, _id: new Date().getTime().toString() },
+      response.data
     ]);
+    setCourse({name: "New Title", number: "New Number"} );
   };
 
-  // makes a new array of courses w/o the courseId
-  const deleteCourse = (courseId) => {
+
+
+  // deletes course from the server 
+  // filters out the course from the courses array
+  const deleteCourse = async (courseId) => {
+    const response = await axios.delete(
+      `${URL}/${course._id}`
+    );
+
     setCourses(courses.filter((course) => course._id !== courseId));
   };
 
