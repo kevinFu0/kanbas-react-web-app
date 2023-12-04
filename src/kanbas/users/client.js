@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 export const BASE_API = process.env.REACT_APP_BASE_API_URL;
+console.log(BASE_API);
 export const USERS_API = `${BASE_API}/api/users`;
-console.log(USERS_API);
+console.log("usersapi" + USERS_API);
 
 // allows cookies
 const request = axios.create({
@@ -12,6 +13,7 @@ const request = axios.create({
 // posts a credentials object to the server
 // response should be the logged in user
 export const signin = async (credentials) => {
+  console.log(`${USERS_API}/signin`);
   const response = await request.post(`${USERS_API}/signin`, credentials);
   return response.data;
 };
