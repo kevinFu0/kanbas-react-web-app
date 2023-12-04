@@ -8,7 +8,7 @@ const request = axios.create({
 
 
 export const BASE_API = process.env.REACT_APP_BASE_API_URL;
-export const USERS_API = `${BASE_API}/api/users`;
+export const USERS_API = `${BASE_API}/users`;
 
 
 export const signout = async () => {
