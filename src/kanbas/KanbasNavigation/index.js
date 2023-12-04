@@ -7,11 +7,19 @@ import { FaBook, FaCreativeCommonsSa } from "react-icons/fa";
 import { BsCalendar2Week, BsInboxFill } from "react-icons/bs";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { FiMonitor } from "react-icons/fi";
-import { BiHelpCircle } from "react-icons/bi";
+import { BiHelpCircle, BiUserCircle } from "react-icons/bi";
 // import "bootstrap-5.1.3-dist/css/bootstrap.min.css";
 
 function KanbasNavigation() {
   const links = [
+
+    "signin",
+    "signup",
+    "signout",
+    "Account2",
+    "admin/users",
+
+
     "Account", 
     "Dashboard",
     "Courses", 
@@ -20,10 +28,20 @@ function KanbasNavigation() {
     "History",
     "Studio",
     "Commons",
-    "Help"
+    "Help",
+
+   
   ];
 
   const icons = {
+
+    Signin: <BiUserCircle className="fs-1 text" />,
+    Signup: <BiUserCircle className="fs-1 text" />,
+    Signout: <BiHelpCircle className="fs-1 text" />,
+    Account2: <BiHelpCircle className="fs-1 text" />,
+    admin: <BiHelpCircle className="fs-1 text" />,
+
+
     Account: <MdOutlineAccountCircle className="fs-1 text wd-white" />,
     AccountGray: <MdOutlineAccountCircle className="fs-1 text wd-gray" />,
     Dashboard: <RiDashboard3Line className="fs-1 text" />,
@@ -34,6 +52,8 @@ function KanbasNavigation() {
     Studio: <FiMonitor className="fs-1 text" />,
     Commons: <FaCreativeCommonsSa className="fs-1 text" />,
     Help: <BiHelpCircle className="fs-1 text" />
+
+  
   };
 
   const { pathname } = useLocation();
