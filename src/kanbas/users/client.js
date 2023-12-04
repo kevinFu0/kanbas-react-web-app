@@ -8,7 +8,7 @@ const request = axios.create({
 
 
 export const BASE_API = process.env.REACT_APP_BASE_API_URL;
-export const USERS_API = `https://kanbas-node-server-app-i8s8.onrender.com/api/users`;
+export const USERS_API = `${BASE_API}/api/users`;
 
 
 export const signout = async () => {
