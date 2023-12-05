@@ -20,10 +20,15 @@ function Account() {
   };
 
   const navigate = useNavigate();
+
   const fetchAccount = async () => {
+  
     const account = await client.account();
+    console.log(account);
     setAccount(account);
   };
+
+
   useEffect(() => {
     if (id) {
       findUserById(id);

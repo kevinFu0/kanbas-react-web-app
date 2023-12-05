@@ -1,14 +1,17 @@
 import axios from 'axios';
 
-export const BASE_API = process.env.REACT_APP_BASE_API_URL;
 
-// export const USERS_API = `${BASE_API}/api/users`;
-export const USERS_API = "https://kanbas-node-server-app-i8s8.onrender.com/api/users";
+// export const USERS_API = "https://kanbas-node-server-app-i8s8.onrender.com/api/users";
 
 // allows cookies
 const request = axios.create({
   withCredentials: true,
 });
+
+
+export const BASE_API = process.env.REACT_APP_BASE_API_URL;
+
+export const USERS_API = `${BASE_API}/api/users`;
 
 // posts a credentials object to the server
 // response should be the logged in user
@@ -21,7 +24,8 @@ export const signin = async (credentials) => {
 // retrieves the current user from the server
 export const account = async () => {
   const response = await request.post(`${USERS_API}/account`);
-  console.log(response.data);
+
+  
   return response.data;
 };
 
